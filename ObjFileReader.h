@@ -115,7 +115,6 @@ public:
             }
             if (i == 0)
             {
-                // transformObject(object, i, vec4(3, 0, 3, 1), 0);
                 transformObject(object, i, vec4(1.5, 0, 2, 1), 0);
             }
             else
@@ -155,55 +154,7 @@ public:
             }
         }
         return true;
-        // case 1:
-        // {
-        //     vec3 min, max;
-        //     float rotationAngle = 180;
-        //     calculateBoundingBox(min, max);
-        //     float scaleLength = 1;
-        //     vec3 center = calcCenter(min, max, scaleLength);
-        //     cout << "\nCar Transformation";
-        //     scalMat[0][0] = (1 / scaleLength);
-        //     scalMat[1][1] = (1 / scaleLength);
-        //     scalMat[2][2] = (1 / scaleLength);
-        //     for (int i = 0; i < triangles.size(); i++)
-        //     {
-        //         //apply transform for each vertex in the triangle
-        //         for (int j = 0; j < 3; j++)
-        //         {
-        //             vec4 temp(triangles[i].vertices[j].x, triangles[i].vertices[j].y, triangles[i].vertices[j].z, 1);
-
-        //             translMat[3] = vec4(center, 1);
-        //             invTranslMat[3] = vec4((center * (-1.0f)), 1);
-
-        //             //rotation matrix definition
-        //             rotationMat[1][1] = cos(rotationAngle);
-        //             rotationMat[1][2] = -sin(rotationAngle);
-        //             rotationMat[2][1] = sin(rotationAngle);
-        //             rotationMat[2][2] = cos(rotationAngle);
-
-        //             // transformMat = translMat * rotationMat * invTranslMat;
-        //             // temp = transformMat * temp;
-
-        //             translMat[3] = vec4(-1.5, 0.25, -1, 1);
-
-        //             temp = scalMat * temp;
-        //             // std::cout << "\n"
-        //             //           << temp.x / temp.w << "\t" << temp.y / temp.w << "\t" << temp.z / temp.w;
-        //             temp = translMat * temp;
-        //             triangles[i].vertices[j] = vec3(temp.x / temp.w, temp.y / temp.w, temp.z / temp.w);
-
-        //             // std::cout << "\n after trans -- "
-        //             //           << temp.x / temp.w << "\t" << temp.y / temp.w << "\t" << temp.z / temp.w;
-        //         }
-        //     }
-        //     return true;
-        //     break;
-        // }
-        // default:
-        // {
-        //     return false;
-        // }
+       
     }
 
     void calculateBoundingBox(vec3 &min, vec3 &max)

@@ -37,7 +37,7 @@ bool Sphere::intersect(const Ray &ray, float t_min, float t_max, Hit &rec, float
 
     auto c = dot(L, L) - (radius * radius);
 
-    // std::cout << "\na -" << a << " b -" << b << " c -" << c;
+    
     if (!solveQuadratic(a, b, c, t0, t1))
         return false;
 
@@ -46,8 +46,8 @@ bool Sphere::intersect(const Ray &ray, float t_min, float t_max, Hit &rec, float
 
     if (t0 < 0)
     {
-        t0 = t1;      // if t0 is negative, let's use t1 instead
-        return false; // both t0 and t1 are negative
+        t0 = t1;      
+        return false; 
     }
 
     float d = b * b - 4 * a * c;

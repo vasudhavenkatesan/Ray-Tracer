@@ -19,7 +19,6 @@ public:
         ka = Ka;
         kd = Kd;
         ks = Ks;
-        // uvTextCoords = uvTextureVal;
     }
 
     ~Triangle() {}
@@ -39,7 +38,6 @@ bool Triangle::intersect(const Ray &r, float t_min, float t_max, Hit &rec, float
 
     float t, b0, b1, b2;
 
-    // cout << "\nv2" << vertices[2].x << "," << vertices[2].y << "," << vertices[2].z;
     vec3 e1 = vertices[1] - vertices[0];
     vec3 e2 = vertices[2] - vertices[0];
     vec3 e3 = vertices[2] - vertices[1];

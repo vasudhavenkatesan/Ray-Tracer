@@ -37,8 +37,8 @@ int main()
     const int imageHeight = (int)imageWidth / aspectRatio;
 
     //setting the camera options
-    // Camera options(vec3(0, 1, 2), vec3(0, 0, 0), vec3(0, 1, 0), 90, aspectRatio);
     Camera options(vec3(0, 1, 2), vec3(0, 0, 0), vec3(0, 1, 0), 90, aspectRatio);
+
     // Light declaration
     Light lights[4];
     Light light0(vec3(-2, 1, 1), vec3(1, 1, 1));
@@ -51,7 +51,7 @@ int main()
 
     // Objects
     Sphere sphere1(vec3(2, 1.25, -1.5), 0.65, vec3(0, 1, 0));
-    // Sphere sphere1(vec3(0, 1.25, -0.5), 0.75, vec3(0, 1, 0));
+
     Plane plane(vec3(0, 2, 1), vec3(-1, 0, 0), vec3(0.65, 0, 0.75));
 
     ObjFileReader objFileReader;
@@ -74,7 +74,7 @@ int main()
     }
 
     // Render
-    ofstream out("out6.ppm");
+    ofstream out("out1.ppm");
     out << "P3\n"
         << imageWidth << " " << imageHeight << "\n255\n";
     cout << "\nEach ray traced position\n";
@@ -111,20 +111,8 @@ vec3 ray_color(const Ray &r, const Hittable &objects, Light lights[], float tNea
 
         color = vec3(0.3, 0.3, 0.3);
         break;
-    case REFLECTION_RAY:
-        if (depth <= 3)
-        {
-            cout << "Refl";
-            vec3 refl = reflect(r.direction, rec.normal);
-            color = color + ray_color(r, objects, lights, tNear, REFLECTION_RAY, depth + 1);
-        }
-        break;
     }
 
     return color;
 }
 
-vec3 reflect(vec3 direction, vec3 normal)
-{
-    return direction - (2 * dot(direction, normal) * normal);
-}

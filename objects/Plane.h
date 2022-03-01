@@ -36,7 +36,6 @@ bool Plane::intersect(const Ray &ray, float t_min, float t_max, Hit &rec, float 
         {
             rec.t = t;
             rec.point = ray.origin + (t * ray.direction);
-            // std::cout << "\nPlane " << rec.point.x << "," << rec.point.y << "," << rec.point.z;
             rec.normal = normal;
             rec.color = checker.getColor(rec.point);
             rec.specSize = 0;

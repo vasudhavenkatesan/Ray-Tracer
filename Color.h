@@ -9,8 +9,6 @@ inline double checkValue(double val)
 {
     if (val < 0.0)
         return 0;
-    // else if (val > 255.0)
-    //     return 255.0;
     else
         return val;
 }
