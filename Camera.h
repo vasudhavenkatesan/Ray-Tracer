@@ -2,14 +2,14 @@
 #define CAMERA_H
 
 #include <cmath>
-const long double pi = acos(-1.L);
+const long double pi_val = acos(-1.L);
 
 class Camera
 {
 public:
     Camera(vec3 lookfrom, vec3 lookat, vec3 vup, double vfov, double aspect_ratio)
     {
-        auto theta = (vfov * pi) / 180;
+        auto theta = (vfov * pi_val) / 180;
         float h = tan(theta / 2);
         float viewport_height = 2.0 * h;
         float viewport_width = aspect_ratio * viewport_height;

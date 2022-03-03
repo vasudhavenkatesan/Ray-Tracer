@@ -7,6 +7,7 @@ CMakeFiles/RayCasting.dir/main.cpp.obj: ../Light.h
 CMakeFiles/RayCasting.dir/main.cpp.obj: ../ObjFileReader.h
 CMakeFiles/RayCasting.dir/main.cpp.obj: ../Ray.h
 CMakeFiles/RayCasting.dir/main.cpp.obj: ../Shader.h
+CMakeFiles/RayCasting.dir/main.cpp.obj: ../Utility.h
 CMakeFiles/RayCasting.dir/main.cpp.obj: ../include/glm-0.9.9.8/glm/common.hpp
 CMakeFiles/RayCasting.dir/main.cpp.obj: ../include/glm-0.9.9.8/glm/detail/_fixes.hpp
 CMakeFiles/RayCasting.dir/main.cpp.obj: ../include/glm-0.9.9.8/glm/detail/_swizzle.hpp

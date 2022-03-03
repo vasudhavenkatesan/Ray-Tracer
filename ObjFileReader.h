@@ -20,11 +20,12 @@ public:
         vector<string> inputs;
         vector<Triangle> object;
 
-        inputs.push_back("C:\\Users\\vasud\\Documents\\Graphics_Code\\Code\\Raycasting\\objFiles\\cube.obj");
+        // inputs.push_back("C:\\Users\\vasud\\Documents\\Graphics_Code\\Code\\Raycasting\\objFiles\\cube.obj");
         inputs.push_back("C:\\Users\\vasud\\Documents\\Graphics_Code\\Code\\Raycasting\\objFiles\\BMW_M3_GTR.obj");
+        // inputs.push_back("C:\\Users\\vasud\\Documents\\Graphics_Code\\Code\\Raycasting\\objFiles\\teapot.obj");
 
         tinyobj::ObjReaderConfig reader_config;
-        //Path to material file
+        // Path to material file
         reader_config.mtl_search_path = "C:\\Users\\vasud\\Documents\\Graphics_Code\\Code\\Raycasting\\objFiles";
         tinyobj::ObjReader reader;
 
@@ -60,14 +61,15 @@ public:
                 uniqVertices.push_back(vertex);
             }
 
-            //for each shape
+            // for each shape
             for (size_t i = 0; i < shapes.size(); i++)
             {
                 size_t index_offset = 0;
 
                 Triangle triangle;
 
-                //for each face
+                // for each face
+
                 for (size_t f = 0; f < shapes[i].mesh.num_face_vertices.size(); f++)
                 {
                     size_t fnum = shapes[i].mesh.num_face_vertices[f];
@@ -86,7 +88,7 @@ public:
                         vertex.z = attrib.vertices[3 * size_t(idx.vertex_index) + 2];
                         vertices.push_back(vertex);
                     }
-
+                    // cout << i << "\n";
                     int materialId = shapes[i].mesh.material_ids[f];
                     vec3 ka;
 
@@ -113,6 +115,7 @@ public:
                     object.push_back(triangle);
                 }
             }
+
             if (i == 0)
             {
                 transformObject(object, i, vec4(1.5, 0, 2, 1), 0);
@@ -138,13 +141,13 @@ public:
         float scaleLength = 1;
         calculateBoundingBox(min, max);
         vec3 center = calcCenter(min, max, scaleLength);
-      
+
         transformMat = glm::rotate(transformMat, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
-        scalMat = glm::scale(glm::mat4(1.0), glm::vec3(1/scaleLength, 1/scaleLength, 1/scaleLength));
+        scalMat = glm::scale(glm::mat4(1.0), glm::vec3(1 / scaleLength, 1 / scaleLength, 1 / scaleLength));
         translMat[3] = translation;
         for (int i = 0; i < triangles.size(); i++)
         {
-            //apply transform for each vertex in the triangle
+            // apply transform for each vertex in the triangle
             for (int j = 0; j < 3; j++)
             {
                 vec4 temp(triangles[i].vertices[j].x, triangles[i].vertices[j].y, triangles[i].vertices[j].z, 1);
@@ -154,7 +157,6 @@ public:
             }
         }
         return true;
-       
     }
 
     void calculateBoundingBox(vec3 &min, vec3 &max)

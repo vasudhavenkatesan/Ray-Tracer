@@ -12,12 +12,14 @@ public:
     Shader()
     {
         kd = 1;
-        ks = 0;
+        ks = 0.5;
+        dStart = 0;
+        dEnd = 5;
     }
     vec3 phongShadingModel(Ray ray, Light lightSources[], int noOfLight, Hit &rec)
     {
         vec3 phongValue(0, 0, 0);
-        float invPi = 1 / (pi);
+        float invPi = 1 / (pi_val);
         uint32_t i = 0;
 
         for (; i < noOfLight; i++)
@@ -37,10 +39,20 @@ public:
             vec3 spec = lightSources[i].color * specReflection;
             phongValue = phongValue + (lightSources[i].color * surfaceIllumination * ((kd * diffuse) + (ks * spec)));
         }
-        return phongValue;
+
+        return addFog(0, vec3(0.5, 0.5, 0.5), phongValue);
+        // return phongValue;
+    }
+
+    vec3 addFog(float depth, vec3 fogColor, vec3 color)
+    {
+        float fd = (dEnd - depth) / (dEnd - dStart);
+        fd = (fd < 0) ? 0 : (fd > 1 ? 1 : fd);
+        return (fd * color) + (1 - fd) * fogColor;
     }
 
 private:
     float kd, ks;
+    float dStart, dEnd;
 };
 #endif
